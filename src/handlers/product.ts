@@ -4,7 +4,10 @@ import Cart from '../models/Cart.model'
 
 export const getProducts = async (req : Request, res : Response) => { // Req es lo que enviamos (datos de un formulario) y Res es la respuesta de la página
     const products = await Product.findAll({ // Obtiene todos los productos
-        where: {createdBy: req.user.idUser}
+        where: {createdBy: req.user.idUser},
+        order: [ //Establecemos el orden
+            ['idProduct', 'ASC']
+        ]
     })
     res.json({data: products}) // Manda como respuesta los productos
 }
