@@ -39,6 +39,11 @@ const corsOptions : CorsOptions = {
     }
 }
 
+// Ping
+server.get('/ping', cors(), (req, res) => {
+  res.status(200).send('pong')
+})
+
 server.use(cors(corsOptions))
 
 // Leer datos de formularios
